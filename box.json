@@ -1,8 +1,8 @@
 {
-	"name" 		: "JavaLoader",
-	"author" 	: "Luis Majano <lmajano@ortussolutions.com",
+	"name" 		: "CSRF",
+	"author" 	: "Brad Wood <brad@ortussolutions.com",
 	"version"	: "1.0.0",
-	"slug"		: "javaloader",
+	"slug"		: "csrf",
 	"directory"	: "/modules",
 	"type"		: "modules",
 	"engines"	: [
@@ -12,9 +12,9 @@
 	],
 	"testbox" 	: {
 		"runner" : {
-			"cf10" 	: "http://cf10cboxdev.jfetmac/codedepot/cbox-javaloader/tests/runner.cfm",
-			"cf11" 	: "http://cf11cboxdev.jfetmac/codedepot/cbox-javaloader/tests/runner.cfm",
-			"railo" : "http://railocboxdev.jfetmac/codedepot/cbox-javaloader/tests/runner.cfm" 
+			"cf10" 	: "http://csrf.dev:8510/tests/runner.cfm",
+			"cf11" 	: "http://csrf.dev:8511/tests/runner.cfm",
+			"railo" : "http://csrf.dev:8080/tests/runner.cfm" 
 		}
 	},
 	"devdependencies" : {
