@@ -19,6 +19,25 @@ WELCOME TO THE CSRF MODULE
 Created & copyright by Luis Majano and Brad Wood (Ortus Solutions, Corp)
 
 ********************************************************************************
+INSTRUCTIONS
+********************************************************************************
+
+Just drop into your modules folder or use CommandBox to install
+
+box install csrf
+
+This module registers the following models:
+
+util@csrf
+
+It also registers the following methods for handlers/layouts/views/interceptors
+
+generateCSRFToken()
+verifyCSRFToken()
+
+If the CF engine supports this natively, that functionality will be used.  Otherwise, a custom implementation will be used based on ColdBox Flash RAM
+
+********************************************************************************
 LICENSE
 ********************************************************************************
 Apache License, Version 2.0.
