@@ -1,14 +1,14 @@
 <cfparam name="url.version" default="0">
-<cfparam name="url.path" 	default="#expandPath( "./JavaLoader-APIDocs" )#">
+<cfparam name="url.path" 	default="#expandPath( "./CSRF-APIDocs" )#">
 <cfscript>
-	docName = "JavaLoader-APIDocs";
-	base = expandPath( "/javaloader" );
+	docName = "CSRF-APIDocs";
+	base = expandPath( "/CSRF" );
 
 	colddoc 	= new ColdDoc();
-	strategy 	= new colddoc.strategy.api.HTMLAPIStrategy( url.path, "JavaLoader v#url.version#" );
+	strategy 	= new colddoc.strategy.api.HTMLAPIStrategy( url.path, "CSRF v#url.version#" );
 	colddoc.setStrategy( strategy );
 
-	colddoc.generate( inputSource=base, outputDir=url.path, inputMapping="javaloader" );
+	colddoc.generate( inputSource=base, outputDir=url.path, inputMapping="CSRF" );
 </cfscript>
 
 <!---

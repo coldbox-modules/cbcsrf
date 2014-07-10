@@ -14,10 +14,9 @@ And hope maketh not ashamed; because the love of God is shed abroad in our heart
 Holy Ghost which is given unto us. ." Romans 5:5
 
 ********************************************************************************
-WELCOME TO THE JAVALOADER MODULE
+WELCOME TO THE CSRF MODULE
 ********************************************************************************
-Created & copyright by Luis Majano (Ortus Solutions, Corp)
-JavaLoader created & copyright by Mark Mandel
+Created & copyright by Luis Majano and Brad Wood (Ortus Solutions, Corp)
 
 ********************************************************************************
 LICENSE
@@ -28,8 +27,8 @@ Apache License, Version 2.0.
 IMPORTANT LINKS
 ********************************************************************************
 Source
-- https://github.com/ColdBox/cbox-javaloder
-- http://www.coldbox.org/forgebox/javaloader
+- https://github.com/ColdBox/cbox-CSRF
+- http://www.coldbox.org/forgebox/CSRF
 
 ********************************************************************************
 SYSTEM REQUIREMENTS
