@@ -3,6 +3,7 @@
 	"author" 	: "Brad Wood <brad@ortussolutions.com",
 	"version"	: "1.0.0",
 	"slug"		: "csrf",
+	"shortDescription" : "Provides generateCSRFToken() and verifyCSRFToken() methods that will simply call the native function if supported by the CF engine, otherwise will use its own implementation.  This ensures code will work on older versions of CF that don't nativley support CSRF tokens.",
 	"directory"	: "/modules",
 	"type"		: "modules",
 	"engines"	: [
