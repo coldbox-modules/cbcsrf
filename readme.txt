@@ -18,6 +18,8 @@ WELCOME TO THE CSRF MODULE
 ********************************************************************************
 Created & copyright by Luis Majano and Brad Wood (Ortus Solutions, Corp)
 
+A module that protects you against CSRF attacks
+
 ********************************************************************************
 INSTRUCTIONS
 ********************************************************************************
@@ -35,7 +37,8 @@ It also registers the following methods for handlers/layouts/views/interceptors
 generateCSRFToken()
 verifyCSRFToken()
 
-If the CF engine supports this natively, that functionality will be used.  Otherwise, a custom implementation will be used based on ColdBox Flash RAM
+If the CF engine supports this natively, that functionality will be used.  
+Otherwise, a custom implementation will be used based on ColdBox Flash RAM
 
 ********************************************************************************
 LICENSE
@@ -46,15 +49,14 @@ Apache License, Version 2.0.
 IMPORTANT LINKS
 ********************************************************************************
 Source
-- https://github.com/ColdBox/cbox-CSRF
-- http://www.coldbox.org/forgebox/CSRF
+- https://github.com/ColdBox/cbox-csrf
+- http://www.coldbox.org/forgebox/csrf
 
 ********************************************************************************
 SYSTEM REQUIREMENTS
 ********************************************************************************
-- Railo 3.2 and above
-- ColdFusion MX 9 and above
-- ColdBox 3.5 and above
+- Railo 4+
+- ColdFusion 9+
 
 ----
 

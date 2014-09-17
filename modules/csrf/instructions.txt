@@ -3,7 +3,7 @@ INSTRUCTIONS
 ********************************************************************************
 Just drop into your modules folder or use CommandBox to install
 
-box install CSRF
+box install csrf
 
 This module will add the following UDFs into any framework files: generateCSRFToken(), verifyCSRFToken()
 If the CF engine supports this natively, that functionality will be used.  Otherwise, a custom implementation will be used.  
