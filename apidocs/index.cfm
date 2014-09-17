@@ -2,13 +2,13 @@
 <cfparam name="url.path" 	default="#expandPath( "./CSRF-APIDocs" )#">
 <cfscript>
 	docName = "CSRF-APIDocs";
-	base = expandPath( "/CSRF" );
+	base = expandPath( "/csrf" );
 
 	colddoc 	= new ColdDoc();
 	strategy 	= new colddoc.strategy.api.HTMLAPIStrategy( url.path, "CSRF v#url.version#" );
 	colddoc.setStrategy( strategy );
 
-	colddoc.generate( inputSource=base, outputDir=url.path, inputMapping="CSRF" );
+	colddoc.generate( inputSource=base, outputDir=url.path, inputMapping="csrf" );
 </cfscript>
 
 <!---
