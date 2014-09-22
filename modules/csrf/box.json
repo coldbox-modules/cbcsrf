@@ -16,7 +16,7 @@
 		{ "type" : "Apache2", "url" : "http://www.apache.org/licenses/LICENSE-2.0.html" } 
 	],
 	"contributors"		: [
-		"Luis Majano <lmajano@ortussolutions.com>", "Curt Gratz <gratz@computerknowhow.com>"
+		"Luis Majano <lmajano@ortussolutions.com>", "Curt Gratz <gratzc@compknowhow.com>"
 	],
 	"testbox" 	: {
 		"runner" : {
