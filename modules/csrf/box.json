@@ -7,7 +7,7 @@
 	"type"		: "modules",
 	"engines"	: [
 		{ "type" : "railo", "version" : ">3.1" },
-		{ "type" : "adobe", "version" : ">9.0" },
+		{ "type" : "adobe", "version" : ">9.0" }
 	],
 	"homepage"	: "http://www.coldbox.org",
 	"documentation"		: "http://wiki.coldbox.org",
