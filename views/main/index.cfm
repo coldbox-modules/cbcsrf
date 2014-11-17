@@ -8,7 +8,7 @@
 
 
 <!--- Use the mapped model directly --->
-<cfset CSRFUtil = getModel( 'util@CSRF' )>
+<cfset CSRFUtil = getModel( 'util@cbCSRF' )>
 
 <cfset token = CSRFUtil.generateCSRFtoken( 'key', true )>
 <p>CSRF says: #token#</p>

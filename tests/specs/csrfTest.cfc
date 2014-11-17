@@ -26,7 +26,7 @@ component extends="coldbox.system.testing.BaseTestCase" appMapping="/root"{
 			});
 
 			it( "should register components", function(){
-				var util = getWireBox().getInstance( "Util@csrf" );
+				var util = getWireBox().getInstance( "Util@cbcsrf" );
 				expect(	util ).toBeComponent();
 			});
 
