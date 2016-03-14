@@ -1,35 +1,26 @@
 {
 	"name" 		: "CSRF",
-	"author" 	: "Brad Wood <brad@ortussolutions.com",
-	"version"	: "1.0.1",
+	"author" 	: "Ortus Solutions <info@ortussolutions.com",
+	"version"	: "@version.number@+@build.number@",
 	"slug"		: "cbcsrf",
 	"shortDescription" : "Provides generateCSRFToken() and verifyCSRFToken() methods that will simply call the native function if supported by the CF engine, otherwise will use its own implementation.  This ensures code will work on older versions of CF that don't nativley support CSRF tokens.",
 	"type"		: "modules",
 	"engines"	: [
-		{ "type" : "railo", "version" : ">3.1" },
+		{ "type" : "lucee", "version" : ">4.5" },
 		{ "type" : "adobe", "version" : ">9.0" }
 	],
-	"homepage"	: "http://www.coldbox.org",
-	"documentation"		: "http://wiki.coldbox.org",
+	"homepage"	: "https://github.com/ColdBox/cbox-csrf",
+	"documentation"		: "https://github.com/ColdBox/cbox-csrf",
 	"repository"		: { "type" : "git", "url" : "https://github.com/ColdBox/cbox-csrf" },
 	"license"			: [ 
 		{ "type" : "Apache2", "url" : "http://www.apache.org/licenses/LICENSE-2.0.html" } 
 	],
 	"contributors"		: [
-		"Luis Majano <lmajano@ortussolutions.com>", "Curt Gratz <gratzc@compknowhow.com>"
+		"Brad Wood <brad@ortussolutions.com>", "Luis Majano <lmajano@ortussolutions.com>", "Curt Gratz <gratzc@compknowhow.com>"
 	],
-	"testbox" 	: {
-		"runner" : {
-			"cf10" 	: "http://csrf.dev:8510/tests/runner.cfm",
-			"cf11" 	: "http://csrf.dev:8511/tests/runner.cfm",
-			"railo" : "http://csrf.dev:8080/tests/runner.cfm" 
-		}
-	},
 	"ignore":[
         "**/.*",
-        "test",
         "tests",
-        "apidocs",
         "*/.md"
     ]
 }

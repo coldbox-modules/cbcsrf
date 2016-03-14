@@ -1,8 +1,7 @@
 /**
-*********************************************************************************
 * Copyright Since 2005 ColdBox Framework by Luis Majano and Ortus Solutions, Corp
-* www.coldbox.org | www.luismajano.com | www.ortussolutions.com
-********************************************************************************
+* www.ortussolutions.com
+* ---
 */
 component {
 
@@ -11,7 +10,7 @@ component {
 	this.author 			= "Brad Wood";
 	this.webURL 			= "http://www.ortussolutions.com";
 	this.description 		= "Provides anti-Cross Site Request Forgery tokens that also work on older versions of CF.";
-	this.version			= "1.0.1+@build.number@";
+	this.version			= "@version.number@+@build.number@";
 	// If true, looks for views in the parent first, if not found, then in the module. Else vice-versa
 	this.viewParentLookup 	= true;
 	// If true, looks for layouts in the parent first, if not found, then in module. Else vice-versa
@@ -34,9 +33,9 @@ component {
 	* Fired when the module is unregistered and unloaded
 	*/
 	function onUnload(){
-		var appHelperArray = controller.getSetting( "ApplicationHelper" );
-		var mixinToRemove = "#moduleMapping#/models/Mixins.cfm";
-		var mixinIndex = arrayFindNoCase( appHelperArray, mixinToRemove );
+		var appHelperArray 	= controller.getSetting( "ApplicationHelper" );
+		var mixinToRemove 	= "#moduleMapping#/models/Mixins.cfm";
+		var mixinIndex 		= arrayFindNoCase( appHelperArray, mixinToRemove );
 		
 		// If the mixin is in the array
 		if( mixinIndex ) {

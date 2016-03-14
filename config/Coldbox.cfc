@@ -1,12 +1,12 @@
-<cfcomponent output="false" hint="My App Configuration">
-<cfscript>
+component{
+
 	// Configure ColdBox Application
 	function configure(){
 
 		// coldbox directives
 		coldbox = {
 			//Application Setup
-			appName 				= "Development Shell",
+			appName 				= "Shell",
 
 			//Development Settings
 			reinitPassword			= "",
@@ -35,7 +35,7 @@
 			//Error/Exception Handling
 			exceptionHandler		= "",
 			onInvalidEvent			= "",
-			customErrorTemplate		= "",
+			customErrorTemplate		= "/coldbox/system/includes/BugReport.cfm",
 
 			//Application Aspects
 			handlerCaching 			= false,
@@ -48,7 +48,7 @@
 		};
 
 		// Activate WireBox
-		wirebox = { enabled = true, singletonReload=true };
+		wirebox = { enabled = true, singletonReload=false };
 
 		// Module Directives
 		modules = {
@@ -62,7 +62,7 @@
 			appenders = {
 				files={class="coldbox.system.logging.appenders.RollingFileAppender",
 					properties = {
-						filename = coldbox.appname, filePath="/#appMapping#/logs"
+						filename = "applogs", filePath="/#appMapping#/logs"
 					}
 				}
 			},
@@ -81,5 +81,5 @@
 		];
 
 	}
-</cfscript>
-</cfcomponent>
+
+}
