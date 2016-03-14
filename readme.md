@@ -11,7 +11,6 @@ Apache License, Version 2.0.
 
 ##SYSTEM REQUIREMENTS
 - Lucee 4.5+
-- Railo 4+
 - ColdFusion 9+
 
 #INSTRUCTIONS
