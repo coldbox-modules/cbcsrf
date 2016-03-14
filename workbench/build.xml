@@ -128,6 +128,7 @@
 			 src="${url.apidocs}?version=${project.version}&amp;path=${dir.api}" 
 			 verbose="true"
 			 retries="5"/>
+		<delete file="${dir.build}/docbox.html" />
 		<!-- stop server -->
 		<exec executable="box" dir="${dir.apidocs}">
 			<arg line="server stop" />
