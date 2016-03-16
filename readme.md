@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/ColdBox/cbox-csrf.svg?branch=master)](https://travis-ci.org/ColdBox/cbox-csrf)
+
 #WELCOME TO THE CSRF MODULE
 
 A module that protects you against CSRF attacks by generating unique FORM/client tokens and providing your ColdBox application with new functions for protection.
