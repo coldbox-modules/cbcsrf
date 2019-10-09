@@ -28,7 +28,9 @@ component accessors=true {
 
 		// Does this engine support CSRF?
 		if ( ( engine eq CFMLEngine.ADOBE && version gte 10 )
-			 || ( engine eq CFMLEngine.RAILO && version gte 4 ) ){
+			 || ( engine eq CFMLEngine.LUCEE && version gte 4 )
+			 || ( structKeyExists( CFMLEngine, "RAILO" ) && engine eq CFMLEngine.RAILO && version gte 4 )
+			 ){
 				setIsCSRF( true );
 		}
 
