@@ -22,16 +22,6 @@ component accessors=true {
 	}
 
 	function onDIComplete() {
-		var CFMLEngine = coldbox.getCFMLEngine();
-		var version = CFMLEngine.getVersion();
-		var engine = CFMLEngine.getEngine();
-
-		// Does this engine support CSRF?
-		if ( ( engine eq CFMLEngine.ADOBE && version gte 10 )
-			 || ( engine eq CFMLEngine.RAILO && version gte 4 ) ){
-				setIsCSRF( true );
-		}
-
 	}
 
 	/**
