@@ -36,8 +36,13 @@ component {
 			],
 			// By default, all csrf tokens have a life-span of 30 minutes. After 30 minutes, they expire and we aut-generate new ones.
 			// If you do not want expiring tokens, then set this value to 0
-			rotationTimeout : 30
+			rotationTimeout : 30,
+			// Enable the /cbcsrf/generate endpoint to generate cbcsrf tokens for secured users.
+			enableEndpoint : false
 		};
+
+		// Generate token key for users
+		router.GET( "/generate/:key?", "main.index" );
 	}
 
 	/**
