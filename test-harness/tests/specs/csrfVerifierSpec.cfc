@@ -9,7 +9,7 @@ component extends="coldbox.system.testing.BaseTestCase" appMapping="/root"{
 
 			beforeEach(function( currentSpec ){
 				setup();
-				csrf = getInstance( "@cbcsrf" );
+				csrf = getInstance( "@CbCsrf" );
 				event = prepareMock( getRequestContext() );
 				verifier = prepareMock( getInstance( dsl="coldbox:interceptor:VerifyCsfr@cbcsrf" ) );
 			});
