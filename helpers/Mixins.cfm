@@ -34,4 +34,12 @@
 	function csrf( string key='', boolean forceNew=false ){
 		return "<input type='hidden' name='csrf' id='csrf' value='#csrfToken( argumentCollection=arguments )#'>";
 	}
+
+	/**
+	 * Clears out all csrf token stored
+	 */
+	function csrfRotate(){
+		getInstance( '@CbCsrf' ).clearAll();
+		return this;
+	}
 </cfscript>

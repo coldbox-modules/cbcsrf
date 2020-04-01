@@ -11,7 +11,6 @@ component accessors="true" singleton {
 	 ********************************************************************* */
 
 	property name="settings" inject="coldbox:moduleSettings:cbcsrf";
-	property name="flash"   inject="coldbox:flash";
 	property name="cacheStorage" inject="cacheStorage@cbstorages";
 
 	/* *********************************************************************
@@ -30,7 +29,15 @@ component accessors="true" singleton {
 	}
 
 	/**
-	 * Provides a random token and stores it in Flash RAM. You can also provide a specific key to store.
+	 * Wipes the entire token storages for a user
+	 */
+	CbCsrf function clearAll(){
+		variables.cacheStorage.delete( getTokenStorageKey() );
+		return this;
+	}
+
+	/**
+	 * Provides a random token and stores it in cbstorages. You can also provide a specific key to store.
 	 *
 	 * @key A random token is generated for the key provided.
 	 * @forceNew If set to true, a new token is generated every time the function is called. If false, in case a token exists for the key, the same key is returned.
