@@ -1,0 +1,21 @@
+{
+    "name":"Tester",
+    "version":"0.0.0",
+    "slug":"tester",
+    "private":true,
+    "description":"",
+    "dependencies":{
+        "coldbox":"^5.0.0",
+        "testbox":"be",
+        "cbstorages":"^2.1.0+45"
+    },
+    "devDependencies":{},
+    "installPaths":{
+        "coldbox":"coldbox/",
+        "testbox":"testbox/",
+        "cbstorages":"modules/cbstorages/"
+    },
+    "testbox":{
+        "runner":"http://localhost:60299/tests/runner.cfm"
+    }
+}
