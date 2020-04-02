@@ -1,10 +1,27 @@
 /**
 * Verifies the CSRF token on all non-GET requests
 */
-component extends="coldbox.system.Interceptor" {
+component extends="coldbox.system.Interceptor" accessors="true" {
 
-    property name="handlerService" inject="coldbox:handlerService";
-    property name="cbcsrf" inject="@cbcsrf";
+	/* *********************************************************************
+	 **						DI
+	 ********************************************************************* */
+
+	property name="handlerService" inject="coldbox:handlerService";
+	property name="cbcsrf" inject="@cbcsrf";
+
+	 /* *********************************************************************
+	  **						Properties
+	  ********************************************************************* */
+
+	property name="isTestMode" type="boolean" default="false";
+
+	/**
+	 * Configure the interceptor
+	 */
+	function configure(){
+		variables.isTestMode = isInstanceOf( controller, "coldbox.system.testing.mock.web.MockController" );
+	}
 
 	/**
 	 * Fire before event execution
@@ -16,6 +33,14 @@ component extends="coldbox.system.Interceptor" {
 	 * @prc
 	 */
     public void function preProcess( event, interceptData, rc, prc ) {
+		// Are we in test mode? then skip
+		if( variables.isTestMode ){
+			if( log.canDebug() ){
+				log.debug( "cbcsrf Verify skipped, we are in integration test mode" );
+			}
+            return;
+		}
+
 		// If it's a GET/HEAD/OPTIONS pass it
         if ( listFindNoCase( "GET,OPTIONS,HEAD", event.getHTTPMethod() )  ) {
 			if( log.canDebug() ){
