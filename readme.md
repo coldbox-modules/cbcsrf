@@ -9,6 +9,8 @@ Even though every CFML engine offers these functions natively, we have expanded 
 ## Features
 
 * Ability to generate security tokens based on your session
+* Automatic token rotation when leveraging `cbauth` login and logout operations
+* Ability to on-demand rotate all security tokens for specific users
 * Leverages `cbStorages` to store your tokens in CacheBox, which can be easily distributed and clustered
 * Ability to create multiple tokens via unique reference `keys`
 * Auto-verification interceptor that will verify all non-GET operations to ensure a security token is passed via `rc` or headers
@@ -23,7 +25,7 @@ Apache License, Version 2.0.
 
 ## Links
 
-- http://www.coldbox.org/forgebox/view/csrf
+- https://www.coldbox.org/forgebox/view/csrf
 - https://github.com/coldbox-modules/cbcsrf
 - https://en.wikipedia.org/wiki/Cross-site_request_forgery
 
@@ -47,56 +49,120 @@ Below are the settings you can use for this module. Remember you must create the
 ```js
 moduleSettings = {
 	cbcsrf : {
-
+		// By default we load up an interceptor that verifies all non-GET incoming requests against the token validations
+		enableAutoVerifier : true,
+		// A list of events to exclude from csrf verification, regex allowed: e.g. stripe\..*
+		verifyExcludes : [
+		],
+		// By default, all csrf tokens have a life-span of 30 minutes. After 30 minutes, they expire and we aut-generate new ones.
+		// If you do not want expiring tokens, then set this value to 0
+		rotationTimeout : 30,
+		// Enable the /cbcsrf/generate endpoint to generate cbcsrf tokens for secured users.
+		enableEndpoint : false
 	}
 };
 ```
 
+## Automatic Token Expiration
 
-#INSTRUCTIONS
+By default, the module is configured to rotate all user csrf tokens **every 30 minutes**.  This means that every token that gets created has a maximum life-span of `{rotationTimeout}` minutes.  If you do NOT want the tokens to EVER expire during the user's logged in session, then use the value of `0` zero.
 
-Just drop into your **modules** folder or use CommandBox to install
+> It is recommended to rotate your keys often, in case your token get's compromised.
 
-`box install cbcsrf`
+## Token Rotation
+
+We have provided several methods to rotate or clear out all of a user's tokens.  If you are using `cbAuth` as your module of choice for authentication, then we will listen to logins and logouts and rotate the keys for you.
+
+If you are NOT using `cbAuth` then we recommend you leverage the `csrfRotate()` mixin or the `cbsrf.rotate()` method on the `@cbsrf` model.
+
+```js
+function doLogin(){
+
+	if( valid login ){
+		// login user
+		csrfRotate();
+	}
+}
+
+function logout(){
+	csrfRotate();
+}
+```
 
 ## Mixins
+
 This module will add the following UDFs into any framework files: 
 
-- `generateCSRFToken()`
-- `verifyCSRFToken()`
+- `csrfToken()` : To generate a token, using the `default` or a custom key
+- `csrfVerify()` : Verify a valid token or not
+- `csrf()` : To generate a hidden field (`csrf`) with the token
+- `csrfRotate()` : To wipe and rotate the tokens for the user
 
-If the CF engine supports this natively, that functionality will be used.  Otherwise, a custom implementation will be used.  
-
-## Mappings
-The module also registers the following mapping in WireBox: `util@cbCSRF`
-
-You can then use this mapping to use the `generateCSRFToken()` and `verifyCSRFToken()` functions in your models if you wish
-
-## Example
-Below is a simple example:
+Here are the method signatures:
 
 ```js
 /**
-* My Event Handler Hint
-*/
+ * Provides a random token and stores it in the coldbox cache storages. You can also provide a specific key to store.
+ *
+ * @key A random token is generated for the key provided.
+ * @forceNew If set to true, a new token is generated every time the function is called. If false, in case a token exists for the key, the same key is returned.
+ *
+ * @return csrf token
+ */
+string function csrfToken( string key='', boolean forceNew=false )
+/**
+ * Validates the given token against the same stored in the session for a specific key.
+ *
+ * @token Token that to be validated against the token stored in the session.
+ * @key The key against which the token be searched.
+ *
+ * @return Valid or Invalid Token
+ */
+boolean function csrfVerify( required string token='', string key='' )
+/**
+ * Generate a random token and build a hidden form element so you can submit it with your form
+ *
+ * @key A random token is generated for the key provided.
+ * @forceNew If set to true, a new token is generated every time the function is called. If false, in case a token exists for the key, the same key is returned.
+ *
+ * @return HTML of the hidden field (csrf)
+ */
+function csrf( string key='', boolean forceNew=false )
+/**
+ * Clears out all csrf token stored
+ */
+function csrfRotate()
+```
+
+## Mappings
+
+The module also registers the following mapping in WireBox: `@cbcsrf` so you can call our service model directly.
+
+## Simple Example
+
+Below is a simple example of manually verifying tokens:
+
+```js
 component {
 
     any function signUp( event, rc, prc ){
         // Store this in a hidden field in the form
-        prc.token = generateCSRFToken();
+        prc.token = csrfGenerate();
     }
 
     any function signUpProcess( event, rc, prc ){
         // Verify CSFR token from form
-        if( verifyCSRFToken( rc.token ) {
+        if( csrfVerify( rc.token ) {
             // save form
         } else {
             // Something isn't right
-            setNextEvent( 'handler.signup' );
+            relocate( 'handler.signup' );
         }
     }
 }
 ```
+
+##
 
 
 ********************************************************************************

@@ -39,7 +39,7 @@
 	 * Clears out all csrf token stored
 	 */
 	function csrfRotate(){
-		getInstance( '@CbCsrf' ).clearAll();
+		getInstance( '@CbCsrf' ).rotate();
 		return this;
 	}
 </cfscript>

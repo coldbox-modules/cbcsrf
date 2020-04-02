@@ -69,14 +69,14 @@ component {
 	 * Listen to cbauth events to auto-rotate tokens upon login
 	 */
 	function postAuthentication( event, interceptData, rc, prc ){
-		wirebox.getInstance( "@cbcsrf" ).clearAll();
+		wirebox.getInstance( "@cbcsrf" ).rotate();
 	}
 
 	/**
 	 * Listen to cbauth events to auto-rotate tokens upon logout
 	 */
 	function postLogout( event, interceptData, rc, prc ){
-		wirebox.getInstance( "@cbcsrf" ).clearAll();
+		wirebox.getInstance( "@cbcsrf" ).rotate();
 	}
 
 }

@@ -31,7 +31,7 @@ component accessors="true" singleton {
 	/**
 	 * Wipes the entire token storages for a user
 	 */
-	CbCsrf function clearAll(){
+	CbCsrf function rotate(){
 		variables.cacheStorage.delete( getTokenStorageKey() );
 		return this;
 	}
