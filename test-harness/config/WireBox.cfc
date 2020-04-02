@@ -27,6 +27,5 @@
 		};
 
 		// Map Bindings below
-		map( "@cbsrf" ).to( "cbcsrf.models.CbCsrf" );
 	}
 }
