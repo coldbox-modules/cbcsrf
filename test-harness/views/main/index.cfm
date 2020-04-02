@@ -2,7 +2,7 @@
 <h1>CSRF</h1>
 
 <!--- Built-in functions --->
-<cfset CSRFUtil = getModel( '@CbCsrf' )>
+<cfset CSRFUtil = getModel( '@cbcsrf' )>
 <cfset token = csrfToken( 'key', true )>
 <p>CSRF says: #token#</p>
 <p>Verified: #csrfVerify( token, 'key' )#</p>
