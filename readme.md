@@ -2,11 +2,20 @@
 
 # ColdBox Anti Cross Site Request Forgery Module (cbcsrf)
 
-A module that protects you against [CSRF](https://en.wikipedia.org/wiki/Cross-site_request_forgery) attacks by generating unique FORM/client tokens and providing your ColdBox application with new functions for protection.  Even though every CFML engine offers these functions, we have expanded them and have made them more flexible and more secure than the native CFML functions.
+A module that protects you against [CSRF](https://en.wikipedia.org/wiki/Cross-site_request_forgery) attacks by generating unique FORM/client tokens and providing your ColdBox application with new functions for verifying these tokens.  
+
+Even though every CFML engine offers these functions natively, we have expanded them and have made them more flexible and more secure than the native CFML functions.
 
 ## Features
 
-* 
+* Ability to generate security tokens based on your session
+* Leverages `cbStorages` to store your tokens in CacheBox, which can be easily distributed and clustered
+* Ability to create multiple tokens via unique reference `keys`
+* Auto-verification interceptor that will verify all non-GET operations to ensure a security token is passed via `rc` or headers
+* Auto-sensing of integration testing so the verifier can allow testing calls
+* Token automatic rotation on specific time periods for enhance security
+* Helpers to automatically generate hidden fields for the token
+* Automatic generation endpoint that can be used for Ajax applications to request tokens for users
 
 ## License
 
