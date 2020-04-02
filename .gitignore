@@ -1,12 +1,15 @@
-.settings
-logs/*.log
-settings.xml
-.netbeans
-tests/results/*
-modules/cbvalidation/*
-coldbox/*
-testbox/*
-artifacts/*
-apidocs/docbox/*
-workbench/build.number
-build/*
+.vscode
+
+.artifacts/**
+.tmp/**
+
+test-harness/.engine/**
+test-harness/.env
+test-harness/coldbox/**
+test-harness/docbox/**
+test-harness/testbox/**
+test-harness/logs/**
+test-harness/modules/**
+
+# log files
+logs/**
