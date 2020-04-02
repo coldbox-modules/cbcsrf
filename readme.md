@@ -1,19 +1,48 @@
-[![Build Status](https://travis-ci.org/ColdBox/cbox-csrf.svg?branch=master)](https://travis-ci.org/ColdBox/cbox-csrf)
+[![Build Status](https://travis-ci.org/coldbox-modules/cbcsrf.svg?branch=master)](https://travis-ci.org/coldbox-modules/cbcsrf)
 
-#WELCOME TO THE CSRF MODULE
+# ColdBox Anti Cross Site Request Forgery Module (cbcsrf)
 
-A module that protects you against CSRF attacks by generating unique FORM/client tokens and providing your ColdBox application with new functions for protection.
+A module that protects you against [CSRF](https://en.wikipedia.org/wiki/Cross-site_request_forgery) attacks by generating unique FORM/client tokens and providing your ColdBox application with new functions for protection.  Even though every CFML engine offers these functions, we have expanded them and have made them more flexible and more secure than the native CFML functions.
 
-##LICENSE
+## Features
+
+* 
+
+## License
+
 Apache License, Version 2.0.
 
-##IMPORTANT LINKS
-- https://github.com/ColdBox/cbox-csrf
-- http://www.coldbox.org/forgebox/view/csrf
+## Links
 
-##SYSTEM REQUIREMENTS
-- Lucee 4.5+
-- ColdFusion 9+
+- http://www.coldbox.org/forgebox/view/csrf
+- https://github.com/coldbox-modules/cbcsrf
+- https://en.wikipedia.org/wiki/Cross-site_request_forgery
+
+## Requirements
+
+- Lucee 5+
+- ColdFusion 2016+
+
+## Installation
+
+Use CommandBox to install
+
+`box install cbcsrf`
+
+You can then continue to configure the module in your `config/Coldbox.cfc`.
+
+## Settings
+
+Below are the settings you can use for this module. Remember you must create the `cbcsrf` struct in your `ColdBox.cfc` under the `moduleSettings` structure:
+
+```js
+moduleSettings = {
+	cbcsrf : {
+
+	}
+};
+```
+
 
 #INSTRUCTIONS
 
@@ -60,11 +89,14 @@ component {
 }
 ```
 
+
 ********************************************************************************
 Copyright Since 2005 ColdBox Framework by Luis Majano and Ortus Solutions, Corp
-www.coldbox.org | www.luismajano.com | www.ortussolutions.com
+www.ortussolutions.com
 ********************************************************************************
-####HONOR GOES TO GOD ABOVE ALL
+
+### HONOR GOES TO GOD ABOVE ALL
+
 Because of His grace, this project exists. If you don't like this, then don't read it, its not for you.
 
 >"Therefore being justified by faith, we have peace with God through our Lord Jesus Christ:
@@ -74,5 +106,6 @@ And patience, experience; and experience, hope:
 And hope maketh not ashamed; because the love of God is shed abroad in our hearts by the 
 Holy Ghost which is given unto us. ." Romans 5:5
 
-###THE DAILY BREAD
+### THE DAILY BREAD
+
  > "I am the way, and the truth, and the life; no one comes to the Father, but by me (JESUS)" Jn 14:1-12
