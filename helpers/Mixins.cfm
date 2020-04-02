@@ -8,7 +8,7 @@
 	 * @return csrf token
 	 */
 	string function csrfToken( string key='', boolean forceNew=false ) {
-		return getInstance( '@CbCsrf' ).generate( argumentCollection = arguments );
+		return getInstance( '@cbcsrf' ).generate( argumentCollection = arguments );
 	}
 
 	/**
@@ -20,7 +20,7 @@
 	 * @return Valid or Invalid Token
 	 */
 	boolean function csrfVerify( required string token='', string key='' ) {
-		return getInstance( '@CbCsrf' ).verify( argumentCollection = arguments );
+		return getInstance( '@cbcsrf' ).verify( argumentCollection = arguments );
 	}
 
 	/**
@@ -39,7 +39,7 @@
 	 * Clears out all csrf token stored
 	 */
 	function csrfRotate(){
-		getInstance( '@CbCsrf' ).rotate();
+		getInstance( '@cbcsrf' ).rotate();
 		return this;
 	}
 </cfscript>

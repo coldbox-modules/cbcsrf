@@ -207,6 +207,11 @@ component{
 }
 ```
 
+## `/cbcsrf/generate` Endpoint
+
+This module also allows you to turn on the generation HTTP endpoint via the `enableEndpoint` boolean setting.  When turned on the module will register the following route: `GET /cbcsrf/generate/:key?`.  You can use this endpoint to generate tokens for your users via AJAX or UI only applications.  Please note that you can pass an optional `/:key` URL parameter that will generate the token for that specific key.
+
+This endpoint should be secured, so we have annotated it with a `secured` annotation so if you are using `cbSecurity` or `cbGuard` this endpoint will only be available to logged in users.  
 
 ********************************************************************************
 Copyright Since 2005 ColdBox Framework by Luis Majano and Ortus Solutions, Corp
