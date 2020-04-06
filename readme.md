@@ -50,7 +50,7 @@ Below are the settings you can use for this module. Remember you must create the
 moduleSettings = {
 	cbcsrf : {
 		// By default we load up an interceptor that verifies all non-GET incoming requests against the token validations
-		enableAutoVerifier : true,
+		enableAutoVerifier : false,
 		// A list of events to exclude from csrf verification, regex allowed: e.g. stripe\..*
 		verifyExcludes : [
 		],
