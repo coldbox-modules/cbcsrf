@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 2.0.1
+
+* Deactivate the verifier by default
+
 ## 2.0.0
 
 ### Features
