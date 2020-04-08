@@ -192,6 +192,13 @@ Please note that this verifier will check the following locations for the token:
 1. The request collection (`rc`) via the `cbcsrf` key
 2. The request HTTP header (`x-csrf-token`) key
 
+### Warning
+
+Please note that you can bypass the CSRF token verifier if you can call your events via the `GET` operation and passing the `rc` variables via the query string.  In order to avoid this, you will have to make sure your events are NOT allowed `GET` operations.  You can do this in two ways:
+
+1. Add the protection via `this.allowedMethods` handler action security: https://coldbox.ortusbooks.com/the-basics/event-handlers/http-method-security
+2. Register only the appropriate method on the ColdBox router: https://coldbox.ortusbooks.com/the-basics/routing/routing-dsl/routing-methods
+
 ### `skipCsrf` Annotation
 
 You can also annotate your event handler actions with a `skipCsrf` annotation and the verifier will also skip the verification process for those actions.
