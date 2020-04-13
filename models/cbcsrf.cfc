@@ -49,7 +49,7 @@ component accessors="true" singleton {
 		var csrfData = cacheStorage.get( getTokenStorageKey(), {} );
 
 		// Mixins pass an empty key argument so "default" isn't set and verification fails when using the examples given in readme.md
-		if (!key.len()){
+		if ( isNull( arguments.key ) || !arguments.key.len() ){
 			arguments.key = "default";
 		}
 
