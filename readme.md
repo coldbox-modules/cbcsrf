@@ -28,6 +28,7 @@ Apache License, Version 2.0.
 - https://www.coldbox.org/forgebox/view/csrf
 - https://github.com/coldbox-modules/cbcsrf
 - https://en.wikipedia.org/wiki/Cross-site_request_forgery
+- https://github.com/coldbox-modules/cbstorages#settings
 
 ## Requirements
 
@@ -62,6 +63,8 @@ moduleSettings = {
 	}
 };
 ```
+
+This module also relies on the cbstorages module which also requires a structure in moduleSettings.  Find the updated documentation here: https://github.com/coldbox-modules/cbstorages#settings
 
 ## Mixins
 
