@@ -73,6 +73,7 @@ This module will add the following UDFs into any framework files:
 - `csrfToken()` : To generate a token, using the `default` or a custom key
 - `csrfVerify()` : Verify a valid token or not
 - `csrf()` : To generate a hidden field (`csrf`) with the token
+- `csrfField()` : To generate a hidden field (`csrf`) with the token, force new token generation and include javascript that will reload the page if the token expires
 - `csrfRotate()` : To wipe and rotate the tokens for the user
 
 Here are the method signatures:
@@ -104,7 +105,15 @@ boolean function csrfVerify( required string token='', string key='' )
  *
  * @return HTML of the hidden field (csrf)
  */
-function csrf( string key='', boolean forceNew=false )
+string function csrf( string key='', boolean forceNew=false )
+/**
+ * Generate a random token in a hidden form element and javascript that will refresh the page automatically when the token expires
+ * @key A random token is generated for the key provided. CFID is the default
+ * @forceNew If set to true, a new token is generated every time the function is called. If false, in case a token exists for the key, the same key is returned.
+ *
+ * @return HTML of the hidden field (csrf)
+ */
+string function csrfField( string key='', boolean forceNew=false )
 /**
  * Clears out all csrf token stored
  */
