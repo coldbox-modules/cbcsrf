@@ -91,7 +91,7 @@ component accessors="true" singleton {
 		return (
 			csrfData.keyExists( arguments.key ) && // Do we have data for the key
 			csrfData[ arguments.key ].token == arguments.token && // The tokens are the same
-			dateCompare( now(), csrfData[ arguments.key ].expires ) == -1 // The token has not expired
+			( csrfData[ arguments.key ].expires == 'never' || dateCompare( now(), csrfData[ arguments.key ].expires ) == -1) // The token has not expired
 		) ? true : false;
 	}
 
