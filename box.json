@@ -32,7 +32,7 @@
         "cbstorages":"^2.1.0"
     },
     "scripts":{
-        "toMaster":"recipe build/toMaster.boxr",
+        "release": "recipe build/release.boxr",
         "format":"cfformat run *.cfc,models/**.cfc",
         "format:watch":"cfformat watch *.cfc,models/**.cfc",
         "format:check":"cfformat check *.cfc,models/**.cfc"
