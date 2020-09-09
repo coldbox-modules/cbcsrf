@@ -47,7 +47,7 @@ component accessors="true" singleton {
 	public string function generate( string key, boolean forceNew = false ){
 		// Get our session csrf data
 		var csrfData = cacheStorage.get( getTokenStorageKey(), {} );
-
+		
 		// Mixins pass an empty key argument so "default" isn't set and verification fails when using the examples given in readme.md
 		if ( isNull( arguments.key ) || !arguments.key.len() ){
 			arguments.key = "default";
@@ -84,9 +84,14 @@ component accessors="true" singleton {
 	 *
 	 * @return If the token validated
 	 */
-	public boolean function verify( required string token = "", string key = "default" ){
+	public boolean function verify( required string token = "", string key ){
 		var csrfData = cacheStorage.get( getTokenStorageKey(), {} );
-
+				
+		// Mixins pass an empty key argument so "default" isn't set and verification fails when using the examples given in readme.md
+		if ( isNull( arguments.key ) || !arguments.key.len() ){
+			arguments.key = "default";
+		}
+		
 		// Verify it
 		return (
 			csrfData.keyExists( arguments.key ) && // Do we have data for the key
