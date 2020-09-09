@@ -44,9 +44,14 @@ component accessors="true" singleton {
 	 *
 	 * @return The csrf token
 	 */
-	public string function generate( string key = "default", boolean forceNew = false ){
+	public string function generate( string key, boolean forceNew = false ){
 		// Get our session csrf data
 		var csrfData = cacheStorage.get( getTokenStorageKey(), {} );
+		
+		// Mixins pass an empty key argument so "default" isn't set and verification fails when using the examples given in readme.md
+		if ( isNull( arguments.key ) || !arguments.key.len() ){
+			arguments.key = "default";
+		}
 
 		// Validate data
 		if (
@@ -79,14 +84,19 @@ component accessors="true" singleton {
 	 *
 	 * @return If the token validated
 	 */
-	public boolean function verify( required string token = "", string key = "default" ){
+	public boolean function verify( required string token = "", string key ){
 		var csrfData = cacheStorage.get( getTokenStorageKey(), {} );
-
+				
+		// Mixins pass an empty key argument so "default" isn't set and verification fails when using the examples given in readme.md
+		if ( isNull( arguments.key ) || !arguments.key.len() ){
+			arguments.key = "default";
+		}
+		
 		// Verify it
 		return (
 			csrfData.keyExists( arguments.key ) && // Do we have data for the key
 			csrfData[ arguments.key ].token == arguments.token && // The tokens are the same
-			dateCompare( now(), csrfData[ arguments.key ].expires ) == -1 // The token has not expired
+			( csrfData[ arguments.key ].expires == 'never' || dateCompare( now(), csrfData[ arguments.key ].expires ) == -1) // The token has not expired
 		) ? true : false;
 	}
 

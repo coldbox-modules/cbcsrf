@@ -28,6 +28,7 @@ Apache License, Version 2.0.
 - https://www.coldbox.org/forgebox/view/csrf
 - https://github.com/coldbox-modules/cbcsrf
 - https://en.wikipedia.org/wiki/Cross-site_request_forgery
+- https://github.com/coldbox-modules/cbstorages#settings
 
 ## Requirements
 
@@ -63,6 +64,8 @@ moduleSettings = {
 };
 ```
 
+This module also relies on the cbstorages module which also requires a structure in moduleSettings.  Find the updated documentation here: https://github.com/coldbox-modules/cbstorages#settings
+
 ## Mixins
 
 This module will add the following UDFs into any framework files: 
@@ -70,6 +73,7 @@ This module will add the following UDFs into any framework files:
 - `csrfToken()` : To generate a token, using the `default` or a custom key
 - `csrfVerify()` : Verify a valid token or not
 - `csrf()` : To generate a hidden field (`csrf`) with the token
+- `csrfField()` : To generate a hidden field (`csrf`) with the token, force new token generation and include javascript that will reload the page if the token expires
 - `csrfRotate()` : To wipe and rotate the tokens for the user
 
 Here are the method signatures:
@@ -101,7 +105,15 @@ boolean function csrfVerify( required string token='', string key='' )
  *
  * @return HTML of the hidden field (csrf)
  */
-function csrf( string key='', boolean forceNew=false )
+string function csrf( string key='', boolean forceNew=false )
+/**
+ * Generate a random token in a hidden form element and javascript that will refresh the page automatically when the token expires
+ * @key A random token is generated for the key provided. CFID is the default
+ * @forceNew If set to true, a new token is generated every time the function is called. If false, in case a token exists for the key, the same key is returned.
+ *
+ * @return HTML of the hidden field (csrf)
+ */
+string function csrfField( string key='', boolean forceNew=false )
 /**
  * Clears out all csrf token stored
  */
@@ -191,6 +203,13 @@ Please note that this verifier will check the following locations for the token:
 
 1. The request collection (`rc`) via the `cbcsrf` key
 2. The request HTTP header (`x-csrf-token`) key
+
+### Warning
+
+Please note that you can bypass the CSRF token verifier if you can call your events via the `GET` operation and passing the `rc` variables via the query string.  In order to avoid this, you will have to make sure your events are NOT allowed `GET` operations.  You can do this in two ways:
+
+1. Add the protection via `this.allowedMethods` handler action security: https://coldbox.ortusbooks.com/the-basics/event-handlers/http-method-security
+2. Register only the appropriate method on the ColdBox router: https://coldbox.ortusbooks.com/the-basics/routing/routing-dsl/routing-methods
 
 ### `skipCsrf` Annotation
 

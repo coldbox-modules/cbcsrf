@@ -1,6 +1,6 @@
 {
     "name":"ColdBox Cross Site Request Forgery (CSRF)",
-    "version":"2.0.1",
+    "version":"2.1.0",
     "location":"https://downloads.ortussolutions.com/ortussolutions/coldbox-modules/cbcsrf/@build.version@/cbcsrf-@build.version@.zip",
     "author":"Ortus Solutions.com <info@ortussolutions.com>",
     "slug":"cbcsrf",
@@ -32,7 +32,7 @@
         "cbstorages":"^2.1.0"
     },
     "scripts":{
-        "toMaster":"recipe build/toMaster.boxr",
+        "release": "recipe build/release.boxr",
         "format":"cfformat run *.cfc,models/**.cfc",
         "format:watch":"cfformat watch *.cfc,models/**.cfc",
         "format:check":"cfformat check *.cfc,models/**.cfc"
