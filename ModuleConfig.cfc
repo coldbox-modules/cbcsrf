@@ -10,7 +10,7 @@ component {
 	this.author 			= "Ortus Solutions, Corp";
 	this.webURL             = "https://www.ortussolutions.com";
 	this.description        = "Provides anti-Cross Site Request Forgery tokens that also work on older versions of CF.";
-	this.version            = "@version.number@+@build.number@";
+	this.version            = "@build.version@+@build.number@";
 	// Module Entry Point
 	this.entryPoint         = "cbcsrf";
 	// Model Namespace
