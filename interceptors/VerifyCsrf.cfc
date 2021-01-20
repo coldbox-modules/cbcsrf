@@ -103,7 +103,7 @@ component extends="coldbox.system.Interceptor" accessors="true" {
     private boolean function actionMarkedToSkip( required event ) {
 		var handlerBean = handlerService.getHandlerBean( arguments.event.getCurrentEvent() );
 		if ( handlerBean.getHandler() == "" ) {
-			return;
+			return false;
 		}
 
 		// If metadata is not loaded, load it
