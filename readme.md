@@ -159,7 +159,7 @@ component {
 
     any function signUp( event, rc, prc ){
         // Store this in a hidden field in the form
-        prc.token = csrfGenerate();
+        prc.token = csrfToken();
     }
 
     any function signUpProcess( event, rc, prc ){
