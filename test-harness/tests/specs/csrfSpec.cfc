@@ -9,7 +9,7 @@ component extends="coldbox.system.testing.BaseTestCase" appMapping="/root"{
 
 			beforeEach(function( currentSpec ){
 				csrf = getInstance( "@cbcsrf" );
-				cacheStorage = getInstance( "cacheStorage@cbstorages" );
+				cacheStorage = getInstance( "cacheStorage@cbcsrf" );
 				csrf.rotate();
 				setup();
 			});
