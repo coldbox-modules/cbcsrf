@@ -59,12 +59,14 @@ moduleSettings = {
 		// If you do not want expiring tokens, then set this value to 0
 		rotationTimeout : 30,
 		// Enable the /cbcsrf/generate endpoint to generate cbcsrf tokens for secured users.
-		enableEndpoint : false
+		enableEndpoint : false,
+		// The WireBox mapping to use for the CacheStorage
+		cacheStorage = "CacheStorage@cbstorages"
 	}
 };
 ```
 
-This module also relies on the cbstorages module which also requires a structure in moduleSettings.  Find the updated documentation here: https://github.com/coldbox-modules/cbstorages#settings
+This module also relies on the cbstorages module which also requires a structure in `moduleSettings`.  Find the updated documentation here: https://github.com/coldbox-modules/cbstorages#settings
 
 ## Mixins
 
