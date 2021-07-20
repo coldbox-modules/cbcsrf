@@ -11,7 +11,7 @@ component accessors="true" singleton {
 	 ********************************************************************* */
 
 	property name="settings" inject="coldbox:moduleSettings:cbcsrf";
-	property name="cacheStorage" inject="cacheStorage@cbstorages";
+	property name="cacheStorage" inject="cacheStorage@cbcsrf";
 
 	/* *********************************************************************
 	 **						Properties
