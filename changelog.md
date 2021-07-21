@@ -7,6 +7,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ----
 
+## [2.2.0] => 2021-JUL-21
+
+### Added
+
+* Github actions migration
+* New setting to provide the ability to choose the storage interface for csrf tokens: `cacheStorage`
+
+### Fixed
+
+* Build version replacement token
+* ensure `actionMarkedToSkip()` returns `false` when the handler is empty
+
+
+----
+
 ## [2.1.0] => 2020-SEP-09
 
 ### Added
