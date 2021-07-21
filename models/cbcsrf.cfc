@@ -10,7 +10,7 @@ component accessors="true" singleton {
 	 **						DI
 	 ********************************************************************* */
 
-	property name="settings" inject="coldbox:moduleSettings:cbcsrf";
+	property name="settings"     inject="coldbox:moduleSettings:cbcsrf";
 	property name="cacheStorage" inject="cacheStorage@cbcsrf";
 
 	/* *********************************************************************
@@ -47,9 +47,9 @@ component accessors="true" singleton {
 	public string function generate( string key, boolean forceNew = false ){
 		// Get our session csrf data
 		var csrfData = cacheStorage.get( getTokenStorageKey(), {} );
-		
+
 		// Mixins pass an empty key argument so "default" isn't set and verification fails when using the examples given in readme.md
-		if ( isNull( arguments.key ) || !arguments.key.len() ){
+		if ( isNull( arguments.key ) || !arguments.key.len() ) {
 			arguments.key = "default";
 		}
 
@@ -60,13 +60,24 @@ component accessors="true" singleton {
 			// Has the key been stored before
 			!csrfData.keyExists( arguments.key ) ||
 			// The token has expired or never, we do an equality as it's faster than isDate() which is a hog
-			( csrfData[ arguments.key ].expires != "never" && dateCompare( now(), csrfData[ arguments.key ].expires ) == 1 )
+			(
+				csrfData[ arguments.key ].expires != "never" && dateCompare(
+					now(),
+					csrfData[ arguments.key ].expires
+				) == 1
+			)
 		) {
 			// Generate the tokens
 			csrfData[ arguments.key ] = {
-				"token" : generateNewToken( arguments.key ),
+				"token"   : generateNewToken( arguments.key ),
 				"created" : now(),
-				"expires" : ( variables.settings.rotationTimeout == 0 ? "never" : dateAdd( "n", variables.settings.rotationTimeout, now() ) )
+				"expires" : (
+					variables.settings.rotationTimeout == 0 ? "never" : dateAdd(
+						"n",
+						variables.settings.rotationTimeout,
+						now()
+					)
+				)
 			};
 			// Store the tokens
 			variables.cacheStorage.set( getTokenStorageKey(), csrfData );
@@ -84,19 +95,27 @@ component accessors="true" singleton {
 	 *
 	 * @return If the token validated
 	 */
-	public boolean function verify( required string token = "", string key ){
+	public boolean function verify(
+		required string token = "",
+		string key
+	){
 		var csrfData = cacheStorage.get( getTokenStorageKey(), {} );
-				
+
 		// Mixins pass an empty key argument so "default" isn't set and verification fails when using the examples given in readme.md
-		if ( isNull( arguments.key ) || !arguments.key.len() ){
+		if ( isNull( arguments.key ) || !arguments.key.len() ) {
 			arguments.key = "default";
 		}
-		
+
 		// Verify it
 		return (
 			csrfData.keyExists( arguments.key ) && // Do we have data for the key
 			csrfData[ arguments.key ].token == arguments.token && // The tokens are the same
-			( csrfData[ arguments.key ].expires == 'never' || dateCompare( now(), csrfData[ arguments.key ].expires ) == -1) // The token has not expired
+			(
+				csrfData[ arguments.key ].expires == "never" || dateCompare(
+					now(),
+					csrfData[ arguments.key ].expires
+				) == -1
+			) // The token has not expired
 		) ? true : false;
 	}
 
@@ -115,7 +134,13 @@ component accessors="true" singleton {
 
 		// Return a 40 character hash as the new token
 		return uCase(
-			left( hash( tokenBase & variables.cacheStorage.getSessionKey(), "SHA-256" ), 40 )
+			left(
+				hash(
+					tokenBase & variables.cacheStorage.getSessionKey(),
+					"SHA-256"
+				),
+				40
+			)
 		);
 	}
 

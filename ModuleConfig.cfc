@@ -6,23 +6,23 @@
 component {
 
 	// Module Properties
-	this.title              = "ColdBox CSRF";
-	this.author 			= "Ortus Solutions, Corp";
-	this.webURL             = "https://www.ortussolutions.com";
-	this.description        = "Provides anti-Cross Site Request Forgery tokens that also work on older versions of CF.";
-	this.version            = "@build.version@+@build.number@";
+	this.title             = "ColdBox CSRF";
+	this.author            = "Ortus Solutions, Corp";
+	this.webURL            = "https://www.ortussolutions.com";
+	this.description       = "Provides anti-Cross Site Request Forgery tokens that also work on older versions of CF.";
+	this.version           = "@build.version@+@build.number@";
 	// Module Entry Point
-	this.entryPoint         = "cbcsrf";
+	this.entryPoint        = "cbcsrf";
 	// Model Namespace
-	this.modelNamespace     = "cbcsrf";
+	this.modelNamespace    = "cbcsrf";
 	// CF Mapping
-	this.cfmapping			= "cbcsrf";
+	this.cfmapping         = "cbcsrf";
 	// Auto Map Models Directory
-	this.autoMapModels      = true;
+	this.autoMapModels     = true;
 	// Helpers
-	this.applicationHelper 	= [ "helpers/Mixins.cfm" ];
+	this.applicationHelper = [ "helpers/Mixins.cfm" ];
 	// Dependencies
-	this.dependencies 		= [ "cbStorages" ];
+	this.dependencies      = [ "cbStorages" ];
 
 	/**
 	 * Configure the module
@@ -32,15 +32,14 @@ component {
 			// By default we load up an interceptor that verifies all non-GET incoming requests against the token validations
 			enableAutoVerifier : false,
 			// A list of events to exclude from csrf verification, regex allowed: e.g. stripe\..*
-			verifyExcludes : [
-			],
+			verifyExcludes     : [],
 			// By default, all csrf tokens have a life-span of 30 minutes. After 30 minutes, they expire and we aut-generate new ones.
 			// If you do not want expiring tokens, then set this value to 0
-			rotationTimeout : 30,
+			rotationTimeout    : 30,
 			// Enable the /cbcsrf/generate endpoint to generate cbcsrf tokens for secured users.
-			enableEndpoint : false,
+			enableEndpoint     : false,
 			// The WireBox mapping to use for the CacheStorage
-			cacheStorage = "CacheStorage@cbstorages"
+			cacheStorage       : "CacheStorage@cbstorages"
 		};
 
 		// Generate token key for users
@@ -53,11 +52,12 @@ component {
 	function onLoad(){
 		binder.map( "CacheStorage@cbcsrf" ).toDSL( settings.cacheStorage );
 		// Auto load verifier?
-		if( settings.enableAutoVerifier ){
-			controller.getInterceptorService()
+		if ( settings.enableAutoVerifier ) {
+			controller
+				.getInterceptorService()
 				.registerInterceptor(
 					interceptorClass = "cbcsrf.interceptors.VerifyCsrf",
-					interceptorName = "VerifyCsfr@cbcsrf"
+					interceptorName  = "VerifyCsfr@cbcsrf"
 				);
 		}
 	}

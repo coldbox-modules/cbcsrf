@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 * Github actions migration
 * New setting to provide the ability to choose the storage interface for csrf tokens: `cacheStorage`
+* Adobe 2021 support
 
 ### Fixed
 
