@@ -38,7 +38,9 @@ component {
 			// If you do not want expiring tokens, then set this value to 0
 			rotationTimeout : 30,
 			// Enable the /cbcsrf/generate endpoint to generate cbcsrf tokens for secured users.
-			enableEndpoint : false
+			enableEndpoint : false,
+			// The WireBox mapping to use for the CacheStorage
+			cacheStorage = "CacheStorage@cbstorages"
 		};
 
 		// Generate token key for users
@@ -49,6 +51,7 @@ component {
 	 * Fires upon load
 	 */
 	function onLoad(){
+		binder.map( "CacheStorage@cbcsrf" ).toDSL( settings.cacheStorage );
 		// Auto load verifier?
 		if( settings.enableAutoVerifier ){
 			controller.getInterceptorService()
