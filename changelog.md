@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ----
 
+## [2.3.0] => 2021-SEP-02
+
+### Added/Compatiblity
+
+* New setting: `enableAuthTokenRotator` which defaults to **false**, unlike previously which was **true**. This allows for rotation of keys for csrf tokens on login and logout if you are using cbauth via the new interceptor: `AuthRotator`.  Make sure you turn this flag to **true** to keep the previous version functionality.
+
+----
+
 ## [2.2.0] => 2021-JUL-21
 
 ### Added

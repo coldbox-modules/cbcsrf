@@ -25,15 +25,15 @@ Apache License, Version 2.0.
 
 ## Links
 
-- https://www.coldbox.org/forgebox/view/csrf
-- https://github.com/coldbox-modules/cbcsrf
-- https://en.wikipedia.org/wiki/Cross-site_request_forgery
-- https://github.com/coldbox-modules/cbstorages#settings
+* https://www.coldbox.org/forgebox/view/csrf
+* https://github.com/coldbox-modules/cbcsrf
+* https://en.wikipedia.org/wiki/Cross-site_request_forgery
+* https://github.com/coldbox-modules/cbstorages#settings
 
 ## Requirements
 
-- Lucee 5+
-- ColdFusion 2016+
+* Lucee 5+
+* ColdFusion 2016+
 
 ## Installation
 
@@ -61,7 +61,9 @@ moduleSettings = {
 		// Enable the /cbcsrf/generate endpoint to generate cbcsrf tokens for secured users.
 		enableEndpoint : false,
 		// The WireBox mapping to use for the CacheStorage
-		cacheStorage = "CacheStorage@cbstorages"
+		cacheStorage = "CacheStorage@cbstorages",
+		// Enable/Disable the cbAuth login/logout listener in order to rotate keys
+		enableAuthTokenRotator : false
 	}
 };
 ```
@@ -70,13 +72,13 @@ This module also relies on the cbstorages module which also requires a structure
 
 ## Mixins
 
-This module will add the following UDFs into any framework files: 
+This module will add the following UDFs into any framework files:
 
-- `csrfToken()` : To generate a token, using the `default` or a custom key
-- `csrfVerify()` : Verify a valid token or not
-- `csrf()` : To generate a hidden field (`csrf`) with the token
-- `csrfField()` : To generate a hidden field (`csrf`) with the token, force new token generation and include javascript that will reload the page if the token expires
-- `csrfRotate()` : To wipe and rotate the tokens for the user
+* `csrfToken()` : To generate a token, using the `default` or a custom key
+* `csrfVerify()` : Verify a valid token or not
+* `csrf()` : To generate a hidden field (`csrf`) with the token
+* `csrfField()` : To generate a hidden field (`csrf`) with the token, force new token generation and include javascript that will reload the page if the token expires
+* `csrfRotate()` : To wipe and rotate the tokens for the user
 
 Here are the method signatures:
 
@@ -134,7 +136,7 @@ By default, the module is configured to rotate all user csrf tokens **every 30 m
 
 ## Token Rotation
 
-We have provided several methods to rotate or clear out all of a user's tokens.  If you are using `cbAuth` as your module of choice for authentication, then we will listen to logins and logouts and rotate the keys for you.
+We have provided several methods to rotate or clear out all of a user's tokens.  If you are using `cbAuth` as your module of choice for authentication, then we will listen to logins and logouts and rotate the keys for you if you turn on the `enableAuthTokenRotator` setting.
 
 If you are NOT using `cbAuth` then we recommend you leverage the `csrfRotate()` mixin or the `cbsrf.rotate()` method on the `@cbsrf` model.
 

@@ -70,7 +70,8 @@
 				enableAutoVerifier : true,
 				verifyExcludes : [
 					"cbtest"
-				]
+				],
+				enableAuthTokenRotator : true
 			}
 		};
 	}
