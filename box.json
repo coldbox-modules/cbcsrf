@@ -33,8 +33,8 @@
     },
     "scripts":{
         "release":"recipe build/release.boxr",
-        "format":"cfformat run *.cfc,models/**.cfc",
-        "format:watch":"cfformat watch *.cfc,models/**.cfc",
-        "format:check":"cfformat check *.cfc,models/**.cfc"
+        "format":"cfformat run handlers,models,test-harness/tests/specs/,ModuleConfig.cfc",
+        "format:watch":"cfformat watch handlers,models,test-harness/tests/specs/,ModuleConfig.cfc",
+        "format:check":"cfformat check handlers,models,test-harness/tests/specs/,ModuleConfig.cfc"
     }
 }

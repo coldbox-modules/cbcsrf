@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ----
 
+## [2.3.0] => 2021-NOV-10
+
+### Fixed
+
+* Fixed cfformat locations on `box.json`
+
+----
+
 ## [2.3.0] => 2021-SEP-02
 
 ### Added/Compatiblity
