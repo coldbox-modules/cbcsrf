@@ -30,5 +30,13 @@
 	#html.submitButton( name="submit" )#
 #html.endForm()#
 
-<cfdump var="#getInstance( "CacheStorage@cbstorages" ).getStorage()#">
+<cfdump var="#getCache( "template" ).getKeys()#">
+<cfscript>
+	cache = getCache( "template" );
+	cache.getKeys().each( function( key ){
+		writeDump( var=cache.getCachedObjectMetadata( key ) );
+		writeDump( var=cache.get( key ) );
+	});
+
+</cfscript>
 </cfoutput>
