@@ -1,6 +1,10 @@
 <cfoutput>
-<h1>CSRF</h1>
+<h1>CSRF - Default</h1>
+<cfset token = csrfToken()>
+<p>CSRF says: #token#</p>
+<p>Verified: #csrfVerify( token )#</p>
 
+<h1>CSRF - Custom Key With Force</h1>
 <!--- Built-in functions --->
 <cfset token = csrfToken( 'key', true )>
 <p>CSRF says: #token#</p>
@@ -25,4 +29,14 @@
 
 	#html.submitButton( name="submit" )#
 #html.endForm()#
+
+<cfdump var="#getCache( "template" ).getKeys()#">
+<cfscript>
+	cache = getCache( "template" );
+	cache.getKeys().each( function( key ){
+		writeDump( var=cache.getCachedObjectMetadata( key ) );
+		writeDump( var=cache.get( key ) );
+	});
+
+</cfscript>
 </cfoutput>

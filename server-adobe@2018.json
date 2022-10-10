@@ -10,10 +10,17 @@
         },
         "rewrites":{
             "enable":"true"
-		},
-		"aliases":{
-            "/moduleroot/cbcsrf":"../"
+        },
+        "webroot":"test-harness",
+        "aliases":{
+            "/moduleroot/cbcsrf":"./"
         }
     },
-    "openBrowser":"false"
+    "jvm":{
+        "heapSize":"1024"
+    },
+    "openBrowser":"false",
+    "cfconfig":{
+        "file":".cfconfig.json"
+    }
 }

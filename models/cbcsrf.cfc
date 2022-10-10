@@ -46,7 +46,7 @@ component accessors="true" singleton {
 	 */
 	public string function generate( string key, boolean forceNew = false ){
 		// Get our session csrf data
-		var csrfData = cacheStorage.get( getTokenStorageKey(), {} );
+		var csrfData = variables.cacheStorage.get( getTokenStorageKey(), {} );
 
 		// Mixins pass an empty key argument so "default" isn't set and verification fails when using the examples given in readme.md
 		if ( isNull( arguments.key ) || !arguments.key.len() ) {
@@ -57,9 +57,9 @@ component accessors="true" singleton {
 		if (
 			// Are we forcing it?
 			arguments.forceNew ||
-			// Has the key been stored before
+			// Is it a new key?
 			!csrfData.keyExists( arguments.key ) ||
-			// The token has expired or never, we do an equality as it's faster than isDate() which is a hog
+			// Has the token expired?
 			(
 				csrfData[ arguments.key ].expires != "never" && dateCompare(
 					now(),
@@ -67,7 +67,7 @@ component accessors="true" singleton {
 				) == 1
 			)
 		) {
-			// Generate the tokens
+			// Generate a new token
 			csrfData[ arguments.key ] = {
 				"token"   : generateNewToken( arguments.key ),
 				"created" : now(),
@@ -79,11 +79,11 @@ component accessors="true" singleton {
 					)
 				)
 			};
-			// Store the tokens
+
+			// Store the token in the storage
 			variables.cacheStorage.set( getTokenStorageKey(), csrfData );
 		}
 
-		// Return the token for this key now
 		return csrfData[ arguments.key ].token;
 	}
 

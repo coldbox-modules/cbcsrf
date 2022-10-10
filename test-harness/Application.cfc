@@ -8,6 +8,7 @@ component{
 
 	// UPDATE THE NAME OF THE MODULE IN TESTING BELOW
 	request.MODULE_NAME = "cbcsrf";
+	request.MODULE_PATH = "cbcsrf";
 
 	// Application properties
 	this.name              = hash( getCurrentTemplatePath() );

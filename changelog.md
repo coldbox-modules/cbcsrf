@@ -7,6 +7,26 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ----
 
+## [3.0.0] => 2022-OCT-10
+
+### Added
+
+* Updated to new module template updates
+
+### Changed
+
+* Dropped ACF 2016
+
+----
+
+## [2.3.0] => 2021-NOV-10
+
+### Fixed
+
+* Fixed cfformat locations on `box.json`
+
+----
+
 ## [2.3.0] => 2021-SEP-02
 
 ### Added/Compatiblity
@@ -63,7 +83,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * Ability to rotate tokens
 * Ability to generate input fields
 * Ability to verify tokens from headers
-* Ability to have an endpoint for csfr generation for authenticated users 
+* Ability to have an endpoint for csfr generation for authenticated users
 * Automatic listeners for `cbauth` to rotate tokens via login/logout methods
 
 ### Compat
