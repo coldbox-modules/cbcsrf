@@ -1,6 +1,6 @@
 {
     "name":"ColdBox Cross Site Request Forgery (CSRF)",
-    "version":"3.0.0",
+    "version":"3.1.0",
     "location":"https://downloads.ortussolutions.com/ortussolutions/coldbox-modules/cbcsrf/@build.version@/cbcsrf-@build.version@.zip",
     "author":"Ortus Solutions.com <info@ortussolutions.com>",
     "slug":"cbcsrf",
@@ -26,13 +26,13 @@
     "dependencies":{
         "cbstorages":"^3.0.0"
     },
-	"devDependencies":{
+    "devDependencies":{
         "commandbox-cfformat":"*",
         "commandbox-docbox":"*",
         "commandbox-dotenv":"*",
         "commandbox-cfconfig":"*"
     },
-	"ignore":[
+    "ignore":[
         "**/.*",
         "test-harness",
         "/server*.json"
@@ -47,9 +47,9 @@
         "format":"cfformat run handlers,models,test-harness/tests/specs/,ModuleConfig.cfc",
         "format:watch":"cfformat watch handlers,models,test-harness/tests/specs/,ModuleConfig.cfc",
         "format:check":"cfformat check handlers,models,test-harness/tests/specs/,ModuleConfig.cfc",
-		"cfpm":"echo '\".engine/adobe2021/WEB-INF/cfusion/bin/cfpm.sh\"' | run",
+        "cfpm":"echo '\".engine/adobe2021/WEB-INF/cfusion/bin/cfpm.sh\"' | run",
         "cfpm:install":"echo '\".engine/adobe2021/WEB-INF/cfusion/bin/cfpm.sh\" install ${1}' | run",
         "install:2021":"run-script cfpm:install zip,debugger,orm,mysql,postgresql,sqlserver,feed",
-        "install:dependencies":"install && cd test-harness && install",
+        "install:dependencies":"install && cd test-harness && install"
     }
 }
