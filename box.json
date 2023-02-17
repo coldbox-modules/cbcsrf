@@ -47,9 +47,6 @@
         "format":"cfformat run handlers,models,test-harness/tests/specs/,ModuleConfig.cfc",
         "format:watch":"cfformat watch handlers,models,test-harness/tests/specs/,ModuleConfig.cfc",
         "format:check":"cfformat check handlers,models,test-harness/tests/specs/,ModuleConfig.cfc",
-        "cfpm":"echo '\".engine/adobe2021/WEB-INF/cfusion/bin/cfpm.sh\"' | run",
-        "cfpm:install":"echo '\".engine/adobe2021/WEB-INF/cfusion/bin/cfpm.sh\" install ${1}' | run",
-        "install:2021":"run-script cfpm:install zip,debugger,orm,mysql,postgresql,sqlserver,feed",
         "install:dependencies":"install && cd test-harness && install"
     }
 }
