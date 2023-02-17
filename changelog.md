@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ----
 
+## [3.1.0] => 2023-FEB-17
+
+### Added
+
+* New versions on all github actions
+* Updates for Adobe 2021 server installations
+
+
+----
+
 ## [3.0.0] => 2022-OCT-10
 
 ### Added
@@ -19,7 +29,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ----
 
-## [2.3.0] => 2021-NOV-10
+## [2.3.1] => 2021-NOV-10
 
 ### Fixed
 
