@@ -30,11 +30,11 @@ jobs:
 
       - name: Setup Database and Fixtures
         run: |
-          sudo systemctl start mysql.service
+          #sudo systemctl start mysql.service
           # Create Database
-          mysql -u${{ env.DB_USER }} -p${{ env.DB_PASSWORD }} -e 'CREATE DATABASE cbsecurity;'
+          #mysql -u${{ env.DB_USER }} -p${{ env.DB_PASSWORD }} -e 'CREATE DATABASE cbsecurity;'
           # Import Database
-          mysql -u${{ env.DB_USER }} -p${{ env.DB_PASSWORD }} < test-harness/tests/resources/cbsecurity.sql
+          #mysql -u${{ env.DB_USER }} -p${{ env.DB_PASSWORD }} < test-harness/tests/resources/cbsecurity.sql
 
       - name: Setup Environment For Testing Process
         run: |
