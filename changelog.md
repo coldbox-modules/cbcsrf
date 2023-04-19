@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ----
 
+## [Unreleased]
+
+### Added
+
+- Github Actions updates
+- ColdBox 7 Testing
+
 ## [3.1.0] => 2023-FEB-17
 
 ### Added
@@ -14,8 +21,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * New versions on all github actions
 * Updates for Adobe 2021 server installations
 
-
-----
 
 ## [3.0.0] => 2022-OCT-10
 
@@ -27,23 +32,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 * Dropped ACF 2016
 
-----
-
 ## [2.3.1] => 2021-NOV-10
 
 ### Fixed
 
 * Fixed cfformat locations on `box.json`
 
-----
-
 ## [2.3.0] => 2021-SEP-02
 
 ### Added/Compatiblity
 
 * New setting: `enableAuthTokenRotator` which defaults to **false**, unlike previously which was **true**. This allows for rotation of keys for csrf tokens on login and logout if you are using cbauth via the new interceptor: `AuthRotator`.  Make sure you turn this flag to **true** to keep the previous version functionality.
-
-----
 
 ## [2.2.0] => 2021-JUL-21
 
@@ -59,8 +58,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * ensure `actionMarkedToSkip()` returns `false` when the handler is empty
 
 
-----
-
 ## [2.1.0] => 2020-SEP-09
 
 ### Added
@@ -74,13 +71,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 * Null checks on `defaultValue` in case it's passed as an empty string
 
-----
-
 ## [2.0.1] => 2020-APR-06
 
 * Deactivate the verifier by default
-
-----
 
 ## [2.0.0] => 2020-APR-02
 
@@ -100,22 +93,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 * All methods signatures have changed, please see the readme for the updated methods
 
-----
-
 ## [1.1.0]
 
 * Travis updates
 * Build updates
 * DocBox migration
 
-----
-
 ## [1.0.1]
 
 * production ignore lists
 * Unloading of helpers
-
-----
 
 ## [1.0.0]
 
