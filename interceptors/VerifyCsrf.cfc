@@ -1,6 +1,6 @@
 /**
-* Verifies the CSRF token on all non-GET requests
-*/
+ * Verifies the CSRF token on all non-GET requests
+ */
 component extends="coldbox.system.Interceptor" accessors="true" {
 
 	/* *********************************************************************
@@ -8,13 +8,16 @@ component extends="coldbox.system.Interceptor" accessors="true" {
 	 ********************************************************************* */
 
 	property name="handlerService" inject="coldbox:handlerService";
-	property name="cbcsrf" inject="@cbcsrf";
+	property name="cbcsrf"         inject="@cbcsrf";
 
-	 /* *********************************************************************
-	  **						Properties
-	  ********************************************************************* */
+	/* *********************************************************************
+	 **						Properties
+	 ********************************************************************* */
 
-	property name="isTestMode" type="boolean" default="false";
+	property
+		name   ="isTestMode"
+		type   ="boolean"
+		default="false";
 
 	/**
 	 * Configure the interceptor
@@ -26,81 +29,83 @@ component extends="coldbox.system.Interceptor" accessors="true" {
 	/**
 	 * Fire before event execution
 	 *
-	 * @event
+	 * @event        
 	 * @interceptData
-	 * @buffer
-	 * @rc
-	 * @prc
+	 * @buffer       
+	 * @rc           
+	 * @prc          
 	 */
-    public void function preProcess( event, interceptData, rc, prc ) {
+	public void function preProcess( event, interceptData, rc, prc ){
 		// Are we in test mode? then skip
-		if( variables.isTestMode ){
-			if( log.canDebug() ){
+		if ( variables.isTestMode ) {
+			if ( log.canDebug() ) {
 				log.debug( "cbcsrf Verify skipped, we are in integration test mode" );
 			}
-            return;
+			return;
 		}
 
 		// If it's a GET/HEAD/OPTIONS pass it
-        if ( listFindNoCase( "GET,OPTIONS,HEAD", event.getHTTPMethod() )  ) {
-			if( log.canDebug() ){
-				log.debug( "cbcsrf Verify skipped due to HTTP method: #event.getHTTPMethod()#=>#event.getCurrentEvent()#" );
+		if ( listFindNoCase( "GET,OPTIONS,HEAD", event.getHTTPMethod() ) ) {
+			if ( log.canDebug() ) {
+				log.debug(
+					"cbcsrf Verify skipped due to HTTP method: #event.getHTTPMethod()#=>#event.getCurrentEvent()#"
+				);
 			}
-            return;
+			return;
 		}
 
 		// is the incoming event is in the skipped events?
-		if(
-			variables.cbcsrf.getSettings()
+		if (
+			variables.cbcsrf
+				.getSettings()
 				.verifyExcludes
 				.filter( function( item ){
 					// If found, then don't return it
 					return !reFindNoCase( item, event.getCurrentEvent() );
-				} ).len() != variables.cbcsrf.getSettings().verifyExcludes.len()
-		){
-			if( log.canDebug() ){
-				log.debug( "cbcsrf Verify skipped as event: #event.getCurrentEvent()# is in the verify excludes list." );
+				} )
+				.len() != variables.cbcsrf.getSettings().verifyExcludes.len()
+		) {
+			if ( log.canDebug() ) {
+				log.debug(
+					"cbcsrf Verify skipped as event: #event.getCurrentEvent()# is in the verify excludes list."
+				);
 			}
 			return;
 		}
 
 		// Does the event have an annotation
-        if ( actionMarkedToSkip( arguments.event ) ) {
-			if( log.canDebug() ){
-				log.debug( "cbcsrf Verify skipped as action has been annotated to skip: #event.getCurrentEvent()#" );
+		if ( actionMarkedToSkip( arguments.event ) ) {
+			if ( log.canDebug() ) {
+				log.debug(
+					"cbcsrf Verify skipped as action has been annotated to skip: #event.getCurrentEvent()#"
+				);
 			}
-            return;
+			return;
 		}
 
 		// Do we have an incoming token in the form or header
-        if ( ! event.valueExists( "csrf" ) && ! event.getHTTPHeader( "x-csrf-token", "" ).len() ) {
-            throw(
-                type = "TokenNotFoundException",
-                message = "The CSRF token was not included."
-            );
-        }
+		if ( !event.valueExists( "csrf" ) && !event.getHTTPHeader( "x-csrf-token", "" ).len() ) {
+			throw( type = "TokenNotFoundException", message = "The CSRF token was not included." );
+		}
 
 		// Get it, put it in prc scope and Verify the token
 		prc.csrfToken = event.getValue( "csrf", event.getHTTPHeader( "x-csrf-token", "" ) );
-        if ( ! variables.cbcsrf.verify( prc.csrfToken ) ) {
-            throw(
-                type = "TokenMismatchException",
-                message = "The CSRF token is invalid."
-            );
+		if ( !variables.cbcsrf.verify( prc.csrfToken ) ) {
+			throw( type = "TokenMismatchException", message = "The CSRF token is invalid." );
 		}
 
-		if( log.canDebug() ){
+		if ( log.canDebug() ) {
 			log.debug( "cbcsrf verified for #event.getCurrentEvent()#" );
 		}
-    }
+	}
 
 	/**
 	 * Are we skipping the action or not due to the skipCsrf annotation?
 	 *
-	 * @event
+	 * @event        
 	 * @interceptData
 	 */
-    private boolean function actionMarkedToSkip( required event ) {
+	private boolean function actionMarkedToSkip( required event ){
 		var handlerBean = handlerService.getHandlerBean( arguments.event.getCurrentEvent() );
 		if ( handlerBean.getHandler() == "" ) {
 			return false;
@@ -112,6 +117,6 @@ component extends="coldbox.system.Interceptor" accessors="true" {
 		}
 
 		return handlerBean.getActionMetadata( "skipCsrf", false );
-    }
+	}
 
 }

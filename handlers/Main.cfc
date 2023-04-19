@@ -2,7 +2,7 @@
  * Handler to generate csrf tokens for a user according to key
  * This handler is secured by default if using cbGuard or cbSecurity
  */
-component secured{
+component secured {
 
 	property name="settings" inject="coldbox:moduleSettings:cbcsrf";
 
