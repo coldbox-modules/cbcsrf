@@ -43,6 +43,19 @@ component extends="coldbox.system.testing.BaseTestCase" appMapping="/root" {
 				expect( logger.$callLog().debug[ 1 ][ 1 ] ).toInclude( "cbcsrf Verify skipped as event:" );
 			} );
 
+			it( "should not verify if the method is in the cbdebugger module", function(){
+				var logger = prepareMock( verifier.getLog() ).$( "canDebug", true ).$( "debug" );
+				event.$( "getHTTPMethod", "POST" ).$( "getCurrentEvent", "cbDebugger:main" );
+
+				verifier.preProcess(
+					event,
+					{},
+					event.getCollection(),
+					event.getPrivateCollection()
+				);
+				expect( logger.$callLog().debug[ 1 ][ 1 ] ).toInclude( "cbcsrf Verify skipped as event:" );
+			} );
+
 			it( "should not verify if the action is marked for skipping", function(){
 				var logger = prepareMock( verifier.getLog() ).$( "canDebug", true ).$( "debug" );
 				event.$( "getHTTPMethod", "POST" ).$( "getCurrentEvent", "verify.index" );

@@ -55,16 +55,7 @@ component extends="coldbox.system.Interceptor" accessors="true" {
 		}
 
 		// is the incoming event is in the skipped events?
-		if (
-			variables.cbcsrf
-				.getSettings()
-				.verifyExcludes
-				.filter( function( item ){
-					// If found, then don't return it
-					return !reFindNoCase( item, event.getCurrentEvent() );
-				} )
-				.len() != variables.cbcsrf.getSettings().verifyExcludes.len()
-		) {
+		if ( actionFlaggedToSkip( arguments.event ) ) {
 			if ( log.canDebug() ) {
 				log.debug(
 					"cbcsrf Verify skipped as event: #event.getCurrentEvent()# is in the verify excludes list."
@@ -99,11 +90,27 @@ component extends="coldbox.system.Interceptor" accessors="true" {
 		}
 	}
 
+
+	/**
+	 * Are we skipping the action or not due to the verifyExcludes setting?
+	 *
+	 * @event
+	 */
+	private boolean function actionFlaggedToSkip( required event ){
+		var actionsToExcludes = [ "^cbdebugger:" ];
+		actionsToExcludes.append( variables.cbcsrf.getSettings().verifyExcludes, true );
+		return actionsToExcludes
+			.filter( function( item ){
+				// If found, then don't return it
+				return !reFindNoCase( item, event.getCurrentEvent() );
+			} )
+			.len() != actionsToExcludes.len();
+	}
+
 	/**
 	 * Are we skipping the action or not due to the skipCsrf annotation?
 	 *
-	 * @event        
-	 * @interceptData
+	 * @event
 	 */
 	private boolean function actionMarkedToSkip( required event ){
 		var handlerBean = handlerService.getHandlerBean( arguments.event.getCurrentEvent() );
