@@ -100,11 +100,9 @@ component extends="coldbox.system.Interceptor" accessors="true" {
 		var actionsToExcludes = [ "^cbdebugger:" ];
 		actionsToExcludes.append( variables.cbcsrf.getSettings().verifyExcludes, true );
 		return actionsToExcludes
-			.filter( function( item ){
-				// If found, then don't return it
-				return !reFindNoCase( item, event.getCurrentEvent() );
-			} )
-			.len() != actionsToExcludes.len();
+			.some( function( item ){
+				return reFindNoCase( item, event.getCurrentEvent() );
+			} );
 	}
 
 	/**
