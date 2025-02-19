@@ -39,7 +39,7 @@ component accessors="true" singleton {
 	/**
 	 * Provides a random token and stores it in cbstorages. You can also provide a specific key to store.
 	 *
-	 * @key A random token is generated for the key provided.
+	 * @key      A random token is generated for the key provided.
 	 * @forceNew If set to true, a new token is generated every time the function is called. If false, in case a token exists for the key, the same key is returned.
 	 *
 	 * @return The csrf token
@@ -91,14 +91,11 @@ component accessors="true" singleton {
 	 * Validates the given token against the same stored in the session for a specific key.
 	 *
 	 * @token Token that to be validated against the token stored in the session.
-	 * @key The key against which the token be searched.
+	 * @key   The key against which the token be searched.
 	 *
 	 * @return If the token validated
 	 */
-	public boolean function verify(
-		required string token = "",
-		string key
-	){
+	public boolean function verify( required string token = "", string key ){
 		var csrfData = cacheStorage.get( getTokenStorageKey(), {} );
 
 		// Mixins pass an empty key argument so "default" isn't set and verification fails when using the examples given in readme.md
@@ -133,15 +130,7 @@ component accessors="true" singleton {
 		var tokenBase = "#arguments.key##getRealIP()##randRange( 0, 65535, "SHA1PRNG" )##getTickCount()#";
 
 		// Return a 40 character hash as the new token
-		return uCase(
-			left(
-				hash(
-					tokenBase & variables.cacheStorage.getSessionKey(),
-					"SHA-256"
-				),
-				40
-			)
-		);
+		return uCase( left( hash( tokenBase & variables.cacheStorage.getSessionKey(), "SHA-256" ), 40 ) );
 	}
 
 	/**
