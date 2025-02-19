@@ -7,7 +7,7 @@
     "dependencies":{
         "coldbox":"^6.0.0",
         "testbox":"*",
-        "cbstorages":"^2.0.0"
+        "cbstorages":"^3.0.0"
     },
     "devDependencies":{},
     "installPaths":{

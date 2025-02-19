@@ -1,10 +1,25 @@
-[![Build Status](https://travis-ci.org/coldbox-modules/cbcsrf.svg?branch=master)](https://travis-ci.org/coldbox-modules/cbcsrf)
+<p align="center">
+	<img src="https://www.ortussolutions.com/__media/coldbox-185-logo.png">
+	<br>
+	<img src="https://www.ortussolutions.com/__media/wirebox-185.png" height="125">
+	<img src="https://www.ortussolutions.com/__media/cachebox-185.png" height="125" >
+	<img src="https://www.ortussolutions.com/__media/logbox-185.png"  height="125">
+</p>
+
+<p align="center">
+	Copyright Since 2005 ColdBox Platform by Luis Majano and Ortus Solutions, Corp
+	<br>
+	<a href="https://www.coldbox.org">www.coldbox.org</a> |
+	<a href="https://www.ortussolutions.com">www.ortussolutions.com</a>
+</p>
+
+----
 
 # ColdBox Anti Cross Site Request Forgery Module (cbcsrf)
 
-A module that protects you against [CSRF](https://en.wikipedia.org/wiki/Cross-site_request_forgery) attacks by generating unique FORM/client tokens and providing your ColdBox application with new functions for verifying these tokens.  
+A module that protects you against [CSRF](https://en.wikipedia.org/wiki/Cross-site_request_forgery) attacks by generating unique FORM/client tokens and providing your ColdBox application with new functions for verifying these tokens.
 
-Even though every CFML engine offers these functions natively, we have expanded them and have made them more flexible and more secure than the native CFML functions.
+Even though every engine offers these functions natively, we have expanded them and have made them more flexible and more secure than the native functions.
 
 ## Features
 
@@ -32,8 +47,9 @@ Apache License, Version 2.0.
 
 ## Requirements
 
+* BoxLang 1+
 * Lucee 5+
-* ColdFusion 2016+
+* ColdFusion 2021+
 
 ## Installation
 
@@ -199,7 +215,7 @@ The verification process is as follows:
 * If the incoming HTTP Method is a `get,options or head` skip verification
 * If the incoming event matches any of the `verifyExcludes` setting, then skip verification
 * If the action is marked with a `skipCsrf` annotation, then skip verification
-* If no `rc.csrf` exists and no `x-csrf-token` header exists, throw a 
+* If no `rc.csrf` exists and no `x-csrf-token` header exists, throw a
 `TokenNotFoundException` exception
 * If the token is invalid then throw a `TokenMismatchException` exception
 
@@ -234,7 +250,7 @@ component{
 
 This module also allows you to turn on the generation HTTP endpoint via the `enableEndpoint` boolean setting.  When turned on the module will register the following route: `GET /cbcsrf/generate/:key?`.  You can use this endpoint to generate tokens for your users via AJAX or UI only applications.  Please note that you can pass an optional `/:key` URL parameter that will generate the token for that specific key.
 
-This endpoint should be secured, so we have annotated it with a `secured` annotation so if you are using `cbSecurity` or `cbGuard` this endpoint will only be available to logged in users.  
+This endpoint should be secured, so we have annotated it with a `secured` annotation so if you are using `cbSecurity` or `cbGuard` this endpoint will only be available to logged in users.
 
 ********************************************************************************
 Copyright Since 2005 ColdBox Framework by Luis Majano and Ortus Solutions, Corp
@@ -249,7 +265,7 @@ Because of His grace, this project exists. If you don't like this, then don't re
 By whom also we have access by faith into this grace wherein we stand, and rejoice in hope of the glory of God.
 And not only so, but we glory in tribulations also: knowing that tribulation worketh patience;
 And patience, experience; and experience, hope:
-And hope maketh not ashamed; because the love of God is shed abroad in our hearts by the 
+And hope maketh not ashamed; because the love of God is shed abroad in our hearts by the
 Holy Ghost which is given unto us. ." Romans 5:5
 
 ### THE DAILY BREAD
