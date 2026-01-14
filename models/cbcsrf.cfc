@@ -85,11 +85,12 @@ component accessors="true" singleton {
 
 	/**
 	 * Determines if the token is within the expiry range
+	 *
 	 * @tokenData The token data struct
 	 *
 	 * @return True if the token is within the expiry range
 	 */
-	private boolean function tokenInExpiryRange( required struct tokenData ) {
+	private boolean function tokenInExpiryRange( required struct tokenData ){
 		if ( tokenData.expires == "never" ) {
 			return false;
 		}

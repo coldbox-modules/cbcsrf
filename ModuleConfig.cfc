@@ -37,7 +37,7 @@ component {
 			// If you do not want expiring tokens, then set this value to 0
 			rotationTimeout        : 30,
 			// The interval in seconds within which, if a token's expiration is impending, we force generate new token for the user.
-			timeoutSkew : 60,
+			timeoutSkew            : 60,
 			// Enable the /cbcsrf/generate endpoint to generate cbcsrf tokens for secured users.
 			enableEndpoint         : false,
 			// The WireBox mapping to use for the CacheStorage
