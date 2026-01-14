@@ -60,12 +60,7 @@ component accessors="true" singleton {
 			// Is it a new key?
 			!csrfData.keyExists( arguments.key ) ||
 			// Has the token expired?
-			(
-				csrfData[ arguments.key ].expires != "never" && dateCompare(
-					now(),
-					csrfData[ arguments.key ].expires
-				) == 1
-			)
+			tokenInExpiryRange( csrfData[ arguments.key ] )
 		) {
 			// Generate a new token
 			csrfData[ arguments.key ] = {
@@ -85,6 +80,22 @@ component accessors="true" singleton {
 		}
 
 		return csrfData[ arguments.key ].token;
+	}
+
+
+	/**
+	 * Determines if the token is within the expiry range
+	 * @tokenData The token data struct
+	 *
+	 * @return True if the token is within the expiry range
+	 */
+	private boolean function tokenInExpiryRange( required struct tokenData ) {
+		if ( tokenData.expires == "never" ) {
+			return false;
+		}
+
+		var secondsToExpiry = dateDiff( "s", now(), tokenData.expires );
+		return secondsToExpiry <= variables.settings.timeoutSkew;
 	}
 
 	/**
