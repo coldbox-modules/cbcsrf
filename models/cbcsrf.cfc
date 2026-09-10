@@ -4,7 +4,7 @@
  * ---
  * Service that encapsulates token security against cross site request forgery (csrf)
  */
-component accessors="true" singleton {
+component accessors="true" singleton threadSafe {
 
 	/* *********************************************************************
 	 **						DI

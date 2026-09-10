@@ -9,6 +9,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+
+- Marked `CBCsrf` as `threadSafe` so WireBox publishes the singleton only after
+  autowiring it. Concurrent requests hitting a cold singleton cache (right after a
+  framework reinit, for instance) could otherwise get a half-wired instance and fail
+  with `variable [CACHESTORAGE] doesn't exist`.
+
 ## [3.2.0] - 2025-02-19
 
 ### Added
