@@ -9,6 +9,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.3.0] - 2026-09-10
+
 ### Fixed
 
 - Marked `CBCsrf` as `threadSafe` so WireBox publishes the singleton only after
@@ -116,5 +118,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Create first module version
 
-[unreleased]: https://github.com/coldbox-modules/cbcsrf/compare/v3.2.0...HEAD
+[unreleased]: https://github.com/coldbox-modules/cbcsrf/compare/v3.3.0...HEAD
+[3.3.0]: https://github.com/coldbox-modules/cbcsrf/compare/v3.2.0...v3.3.0
 [3.2.0]: https://github.com/coldbox-modules/cbcsrf/compare/8fe273b1fc4adc4c29062bb34aa040de9da63177...v3.2.0
