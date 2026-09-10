@@ -1,6 +1,6 @@
 {
     "name":"ColdBox Cross Site Request Forgery (CSRF)",
-    "version":"3.2.0",
+    "version":"3.3.0",
     "location":"https://downloads.ortussolutions.com/ortussolutions/coldbox-modules/cbcsrf/@build.version@/cbcsrf-@build.version@.zip",
     "author":"Ortus Solutions.com <info@ortussolutions.com>",
     "slug":"cbcsrf",
@@ -27,7 +27,7 @@
         "cbstorages":"^3.0.0"
     },
     "devDependencies":{
-		"commandbox-boxlang":"*",
+        "commandbox-boxlang":"*",
         "commandbox-cfformat":"*",
         "commandbox-docbox":"*"
     },
@@ -47,11 +47,11 @@
         "format:watch":"cfformat watch handlers/,interceptors/,models/,test-harness/tests/specs,ModuleConfig.cfc ./.cfformat.json",
         "format:check":"cfformat check handlers/,interceptors/,models/,test-harness/tests/specs,ModuleConfig.cfc",
         "install:dependencies":"install && cd test-harness && install",
-		"start:lucee" : "server start serverConfigFile=server-lucee@5.json",
-		"start:2021" : "server start serverConfigFile=server-adobe@2021.json",
-		"stop:lucee" : "server stop serverConfigFile=server-lucee@5.json",
-		"stop:2021" : "server stop serverConfigFile=server-adobe@2021.json",
-		"logs:lucee" : "server log serverConfigFile=server-lucee@5.json --follow",
-		"logs:2021" : "server log serverConfigFile=server-adobe@2021.json --follow"
+        "start:lucee":"server start serverConfigFile=server-lucee@5.json",
+        "start:2021":"server start serverConfigFile=server-adobe@2021.json",
+        "stop:lucee":"server stop serverConfigFile=server-lucee@5.json",
+        "stop:2021":"server stop serverConfigFile=server-adobe@2021.json",
+        "logs:lucee":"server log serverConfigFile=server-lucee@5.json --follow",
+        "logs:2021":"server log serverConfigFile=server-adobe@2021.json --follow"
     }
 }

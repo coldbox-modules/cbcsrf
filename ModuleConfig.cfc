@@ -36,6 +36,8 @@ component {
 			// By default, all csrf tokens have a life-span of 30 minutes. After 30 minutes, they expire and we aut-generate new ones.
 			// If you do not want expiring tokens, then set this value to 0
 			rotationTimeout        : 30,
+			// The interval in seconds within which, if a token's expiration is impending, we force generate new token for the user.
+			timeoutSkew            : 60,
 			// Enable the /cbcsrf/generate endpoint to generate cbcsrf tokens for secured users.
 			enableEndpoint         : false,
 			// The WireBox mapping to use for the CacheStorage
